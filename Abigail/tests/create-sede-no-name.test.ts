@@ -42,7 +42,7 @@ describe('POST /sede - campos faltantes', () => {
     const res = await request(app)
       .post('/sede')
       .send({
-        convocatoria: 'Convocatoria X' // faltan num_grupos, fecha, nombre
+        convocatoria: 'Convocatoria X'
       });
 
     expect(res.statusCode).toEqual(500);
