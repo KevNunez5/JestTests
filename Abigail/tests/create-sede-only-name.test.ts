@@ -24,13 +24,11 @@ jest.mock('../supabaseClient', () => ({
 }));
 
 describe('POST /sede - campos faltantes', () => {
-  it('Debe regresar 500 al faltar el campo requerido "nombre".', async () => {
+  it('Debe regresar 500 si faltan varios campos', async () => {
     const res = await request(app)
       .post('/sede')
       .send({
-        convocatoria: 'Convocatoria X',
-        num_grupos: 3,
-        fecha: '2025-05-20'
+        nombre: 'Pablito Tormenta'
       });
 
     expect(res.statusCode).toEqual(500);

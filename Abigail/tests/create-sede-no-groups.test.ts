@@ -37,26 +37,4 @@ describe('POST /sede - campos faltantes', () => {
     expect(res.body).toHaveProperty('error');
     expect(res.body.error).toMatch(/Faltan campos obligatorios/i);
   });
-
-  it('Debe regresar 500 si varios campos requeridos faltan.', async () => {
-    const res = await request(app)
-      .post('/sede')
-      .send({
-        convocatoria: 'Convocatoria X'
-      });
-
-    expect(res.statusCode).toEqual(500);
-    expect(res.body).toHaveProperty('error');
-    expect(res.body.error).toMatch(/Faltan campos obligatorios/i);
-  });
-
-  it('Debe regresar 500 si no se envía ningún dato.', async () => {
-    const res = await request(app)
-      .post('/sede')
-      .send({}); // vacío
-
-    expect(res.statusCode).toEqual(500);
-    expect(res.body).toHaveProperty('error');
-    expect(res.body.error).toMatch(/Faltan campos obligatorios/i);
-  });
 });
